@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var stepOutlet: UIStepper!
+     var placeholderText:String = ""
+     @IBOutlet weak var stepOutlet: UIStepper!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var textboxInput: UITextField!
     @IBOutlet weak var chalkboardLabel: UILabel!
@@ -22,10 +22,20 @@ class ViewController: UIViewController {
     @IBAction func stepcounterTapped(_ sender: Any) {
        numberLabel.text = String(Int(stepOutlet.value))
     }
+   
     @IBAction func writeButtonPressed(_ sender: Any) {
-        writeStatement()
-            }
+        
+        writeStatement(numberOfTimes: Int(stepOutlet.value))
+                chalkboardLabel.text = placeholderText
+        
+       chalkboardLabel.text = placeholderText
+        }
+        
+
+    func writeStatement (numberOfTimes: Int) {
+        for _ in 1...numberOfTimes{
+            placeholderText += textboxInput.text! + "\n" }
+    }
     
-    func writeStatement () {chalkboardLabel.text = textboxInput.text}
 }
 
